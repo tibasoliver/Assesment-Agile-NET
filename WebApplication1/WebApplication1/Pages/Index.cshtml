@@ -66,12 +66,12 @@
 			<option value="op4">Vegetable 1</option>
 			<option value="op5">Vegetable 2</option>
 			<option value="op6">Vegetable 3</option>
-			<option value="op7">Cold Drinks 1</option>
-			<option value="op8">Cold Drinks 2</option>
-			<option value="op9">Cold Drinks 3</option>
-			<option value="op10">Hot Drinks 1</option>
-			<option value="op11">Hot Drinks 2</option>
-			<option value="op12">Hot Drinks 3</option>
+			<option value="op7">Cold Drink 1</option>
+			<option value="op8">Cold Drink 2</option>
+			<option value="op9">Cold Drink 3</option>
+			<option value="op10">Hot Drink 1</option>
+			<option value="op11">Hot Drink 2</option>
+			<option value="op12">Hot Drink 3</option>
 		</select>
 	</div>
 </div>
@@ -79,40 +79,41 @@
 <br/>
 <br/>
 
-<script>
-	window.onload = function () {
-
-	var chart = new CanvasJS.Chart("chartContainer", {
-		animationEnabled: true,
-		theme: "light2",
-		title:{
-			text: "Sales By Month for"
-		},
-		axisX: {
-			valueFormatString: "MMM" 
-		},
-		data: [{
-			type: "line",
-			indexLabelFontSize: 16,
-			dataPoints: [
-				{ y: 50, label: "Janeiro"},
-				{ y: 500, label: "Fevereiro"},
-				{ y: 300, label: "Março"},// indexLabel: "\u2191 300",markerColor: "red", markerType: "triangle" },
-				{ y: 25, label:"Abril" }
-			]
-		}]
-	});
-	chart.render();
-
-	}
-</script>
-
 <div id="chartContainer" style="height: 370px; width: 60%; margin: 0 auto;"></div>
 <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
 <script>
+
+	var chart;
+
+	window.onload = function () {
+
+			chart = new CanvasJS.Chart("chartContainer", {
+			animationEnabled: true,
+			theme: "light2",
+			title: {
+				text: "Sales By Month for Example"
+			},
+			axisX: {
+				valueFormatString: "MMM"
+			},
+			data: [{
+				type: "line",
+				indexLabelFontSize: 16,
+				dataPoints: [
+					{ y: 50, label: "Janeiro" },
+					{ y: 500, label: "Fevereiro" },
+					{ y: 300, label: "Março" },
+					{ y: 25, label: "Abril" }
+				]
+			}]
+		});
+		chart.render();
+
+	}
+
 	document.addEventListener('DOMContentLoaded', function () {
 		hideDropdownOptions('dropdown2');
 		hideDropdownOptions('dropdown3');
@@ -120,7 +121,7 @@
 
 	function hideDropdownOptions(dropdownId) {
 		var dropdown = document.getElementById(dropdownId);
-		for (var i = 1; i < dropdown.options.length; i++) { // Começa no 1 para pular a primeira opção
+		for (var i = 1; i < dropdown.options.length; i++) { 
 			dropdown.options[i].hidden = true;
 		}
 	}
@@ -133,6 +134,11 @@
 	var productDropdown = document.getElementById('dropdown2');
 	productDropdown.addEventListener('change', function () {
 		updateBrandOptions(productDropdown.value);
+	});
+
+	var brandDropdown = document.getElementById('dropdown3');
+	brandDropdown.addEventListener('change', function (){
+		updateGraph(brandDropdown.value);
 	});
 
 	function updateProductOptions(categoryValue) {
@@ -150,12 +156,12 @@
 		productDropdown.value = '';
 		brandDropdown.value = '';
 
-		if (categoryValue === 'op1') { // Food		
-			productDropdown.options[1].hidden = false; // Fruit
-			productDropdown.options[2].hidden = false; // Vegetable
-		} else if (categoryValue === 'op2') { // Drinks
-			productDropdown.options[3].hidden = false; // Cold Drinks
-			productDropdown.options[4].hidden = false; // Hot Drinks
+		if (categoryValue === 'op1') { 		
+			productDropdown.options[1].hidden = false; 
+			productDropdown.options[2].hidden = false; 
+		} else if (categoryValue === 'op2') { 
+			productDropdown.options[3].hidden = false; 
+			productDropdown.options[4].hidden = false; 
 		}
 	}
 
@@ -184,6 +190,67 @@
 			brandDropdown.options[10].hidden = false;
 			brandDropdown.options[11].hidden = false;
 			brandDropdown.options[12].hidden = false;
+		}
+	}
+
+	function updateGraph(brandValue){
+		if (document.getElementById('dropdown1').value !== '' && document.getElementById('dropdown2').value !== '' &&
+		brandValue !== ''){
+
+			updateSalesGraph(getSelectedBrandText().replace(/ /g, ''));
+		}
+	}
+
+	function getSelectedBrandText() {
+		var dropdown = document.getElementById("dropdown3");
+		var selectedOptionText = dropdown.options[dropdown.selectedIndex].text;
+		return selectedOptionText;
+	}
+
+	function loadXMLDoc(filename, callback) {
+		var xhttp = new XMLHttpRequest();
+		xhttp.overrideMimeType("application/xml");
+		xhttp.open("GET", filename, true);
+		xhttp.onreadystatechange = function () {
+			if (this.readyState == 4 && this.status == 200) {
+				callback(this.responseXML);
+			}
+		};
+		xhttp.send();
+	}
+
+	loadXMLDoc("/Sales.xml", function (xmlData) {
+		salesXML = xmlData;
+		parser = new DOMParser();
+		xmlDoc = parser.parseFromString(salesXML, "text/xml");
+	});
+
+	function getSalesDataByBrand(brandValue) {
+
+		var meses = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+		var dataPoints = [];
+
+		var valueDropdown1 = document.getElementById("dropdown1").options[document.getElementById("dropdown1").selectedIndex].text.replace(/ /g, '');
+		var valueDropdown2 = document.getElementById("dropdown2").options[document.getElementById("dropdown2").selectedIndex].text.replace(/ /g, '');
+
+		meses.forEach(mes => {
+			var selector = 'SalesData > ' + valueDropdown1 + ' > ' + valueDropdown2 + ' > ' + brandValue + ' > ' + mes;
+			var vendas = salesXML.querySelector(selector).getAttribute('sales');
+			dataPoints.push({ y: parseInt(vendas), label: mes });
+		});
+
+		console.log(dataPoints);
+		return dataPoints;
+	}
+
+	function updateSalesGraph(brandValue) {
+		if (document.getElementById('dropdown1').value !== '' && document.getElementById('dropdown2').value !== '' &&
+			brandValue !== '') {
+			var dataPoints = getSalesDataByBrand(brandValue);
+
+			chart.options.data[0].dataPoints = dataPoints;
+			chart.options.title.text = "Vendas Por Mês para " + brandValue;
+			chart.render();
 		}
 	}
 

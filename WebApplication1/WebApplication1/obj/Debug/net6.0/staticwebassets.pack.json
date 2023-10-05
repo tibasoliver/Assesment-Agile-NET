@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\WebApplication1.bundle.scp.css"
     },
     {
+      "Id": "D:\\repos\\Assesment-Agile-NET\\WebApplication1\\WebApplication1\\wwwroot\\Sales.xml",
+      "PackagePath": "staticwebassets\\Sales.xml"
+    },
+    {
       "Id": "D:\\repos\\Assesment-Agile-NET\\WebApplication1\\WebApplication1\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

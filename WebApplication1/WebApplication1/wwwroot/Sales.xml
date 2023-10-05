@@ -90,4 +90,94 @@
       </Vegetable3>
     </Vegetable>
   </Food>
+  <Drinks>
+    <ColdDrinks>
+      <ColdDrink1>
+        <January sales="155"/>
+        <February sales="137"/>
+        <March sales="158"/>
+        <April sales="162"/>
+        <May sales="165"/>
+        <June sales="135"/>
+        <July sales="127"/>
+        <August sales="151"/>
+        <September sales="138"/>
+        <October sales="142"/>
+        <November sales="154"/>
+        <December sales="146"/>
+      </ColdDrink1>
+      <ColdDrink2>
+        <January sales="232"/>
+        <February sales="241"/>
+        <March sales="205"/>
+        <April sales="235"/>
+        <May sales="213"/>
+        <June sales="207"/>
+        <July sales="218"/>
+        <August sales="221"/>
+        <September sales="242"/>
+        <October sales="231"/>
+        <November sales="225"/>
+        <December sales="213"/>
+      </ColdDrink2>
+      <ColdDrink3>
+        <January sales="215"/>
+        <February sales="223"/>
+        <March sales="218"/>
+        <April sales="225"/>
+        <May sales="224"/>
+        <June sales="219"/>
+        <July sales="202"/>
+        <August sales="241"/>
+        <September sales="242"/>
+        <October sales="233"/>
+        <November sales="234"/>
+        <December sales="227"/>
+      </ColdDrink3>
+    </ColdDrinks>
+    <HotDrinks>
+      <HotDrink1>
+        <January sales="245"/>
+        <February sales="253"/>
+        <March sales="252"/>
+        <April sales="241"/>
+        <May sales="252"/>
+        <June sales="253"/>
+        <July sales="254"/>
+        <August sales="255"/>
+        <September sales="252"/>
+        <October sales="243"/>
+        <November sales="244"/>
+        <December sales="235"/>
+      </HotDrink1>
+      <HotDrink2>
+        <January sales="282"/>
+        <February sales="281"/>
+        <March sales="278"/>
+        <April sales="271"/>
+        <May sales="274"/>
+        <June sales="275"/>
+        <July sales="288"/>
+        <August sales="291"/>
+        <September sales="272"/>
+        <October sales="273"/>
+        <November sales="284"/>
+        <December sales="277"/>
+      </HotDrink2>
+      <HotDrink3>
+        <January sales="292"/>
+        <February sales="293"/>
+        <March sales="296"/>
+        <April sales="291"/>
+        <May sales="292"/>
+        <June sales="299"/>
+        <July sales="298"/>
+        <August sales="291"/>
+        <September sales="292"/>
+        <October sales="293"/>
+        <November sales="294"/>
+        <December sales="297"/>
+      </HotDrink3>
+    </HotDrinks>
+  </Drinks>
 </SalesData>
