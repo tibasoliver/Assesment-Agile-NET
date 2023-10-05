@@ -32,34 +32,52 @@
 
 </style>
 
+<br />
+<br />
+
 <div class="container">
 	<div class="dropdown-label left">
 		<label for="dropdown1">Category:</label>
 		<select id="dropdown1">
-			<option value="op1">Opção 1</option>
-			<option value="op2">Opção 2</option>
-			<option value="op3">Opção 3</option>
+			<option value="">-- Select one category --</option>
+			<option value="op1">Food</option>
+			<option value="op2">Drinks</option>
 		</select>
 	</div>
 
 	<div class="dropdown-label center">
 		<label for="dropdown2">Product:</label>
 		<select id="dropdown2">
-			<option value="op1">Opção 1</option>
-			<option value="op2">Opção 2</option>
-			<option value="op3">Opção 3</option>
+			<option value="">-- Select one product --</option>
+			<option value="op1">Fruit</option>
+			<option value="op2">Vegetable</option>
+			<option value="op3">Cold Drinks</option>
+			<option value="op4">Hot Drinks</option>
 		</select>
 	</div>
 
 	<div class="dropdown-label right">
 		<label for="dropdown3">Brand:</label>
 		<select id="dropdown3">
-			<option value="op1">Opção 1</option>
-			<option value="op2">Opção 2</option>
-			<option value="op3">Opção 3</option>
+			<option value="">-- Select one brand --</option>
+			<option value="op1">Fruit 1</option>
+			<option value="op2">Fruit 2</option>
+			<option value="op3">Fruit 3</option>
+			<option value="op4">Vegetable 1</option>
+			<option value="op5">Vegetable 2</option>
+			<option value="op6">Vegetable 3</option>
+			<option value="op7">Cold Drinks 1</option>
+			<option value="op8">Cold Drinks 2</option>
+			<option value="op9">Cold Drinks 3</option>
+			<option value="op10">Hot Drinks 1</option>
+			<option value="op11">Hot Drinks 2</option>
+			<option value="op12">Hot Drinks 3</option>
 		</select>
 	</div>
 </div>
+
+<br/>
+<br/>
 
 <script>
 	window.onload = function () {
@@ -91,3 +109,82 @@
 
 <div id="chartContainer" style="height: 370px; width: 60%; margin: 0 auto;"></div>
 <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		hideDropdownOptions('dropdown2');
+		hideDropdownOptions('dropdown3');
+	});
+
+	function hideDropdownOptions(dropdownId) {
+		var dropdown = document.getElementById(dropdownId);
+		for (var i = 1; i < dropdown.options.length; i++) { // Começa no 1 para pular a primeira opção
+			dropdown.options[i].hidden = true;
+		}
+	}
+
+	var categoryDropdown = document.getElementById('dropdown1');
+	categoryDropdown.addEventListener('change', function () {
+		updateProductOptions(categoryDropdown.value);
+	});
+
+	var productDropdown = document.getElementById('dropdown2');
+	productDropdown.addEventListener('change', function () {
+		updateBrandOptions(productDropdown.value);
+	});
+
+	function updateProductOptions(categoryValue) {
+		var productDropdown = document.getElementById('dropdown2');
+		var brandDropdown = document.getElementById('dropdown3');
+
+		for (var i = 1; i < productDropdown.options.length; i++) {
+			productDropdown.options[i].hidden = true;
+		}
+
+		for(var i = 1; i < brandDropdown.options.length; i++) {
+			brandDropdown.options[i].hidden = true;
+		}
+
+		productDropdown.value = '';
+		brandDropdown.value = '';
+
+		if (categoryValue === 'op1') { // Food		
+			productDropdown.options[1].hidden = false; // Fruit
+			productDropdown.options[2].hidden = false; // Vegetable
+		} else if (categoryValue === 'op2') { // Drinks
+			productDropdown.options[3].hidden = false; // Cold Drinks
+			productDropdown.options[4].hidden = false; // Hot Drinks
+		}
+	}
+
+	function updateBrandOptions(productValue) {
+		var brandDropdown = document.getElementById('dropdown3');
+
+		for (var i = 1; i < brandDropdown.options.length; i++) {
+			brandDropdown.options[i].hidden = true;
+		}
+
+		brandDropdown.value = '';
+
+		if (productValue === 'op1') {
+			brandDropdown.options[1].hidden = false; 
+			brandDropdown.options[2].hidden = false;
+			brandDropdown.options[3].hidden = false;
+		} else if (productValue === 'op2') {
+			brandDropdown.options[4].hidden = false; 
+			brandDropdown.options[5].hidden = false; 
+			brandDropdown.options[6].hidden = false;
+		} else if (productValue === 'op3') {
+			brandDropdown.options[7].hidden = false;
+			brandDropdown.options[8].hidden = false;
+			brandDropdown.options[9].hidden = false;
+		} else if (productValue === 'op4') {
+			brandDropdown.options[10].hidden = false;
+			brandDropdown.options[11].hidden = false;
+			brandDropdown.options[12].hidden = false;
+		}
+	}
+
+</script>

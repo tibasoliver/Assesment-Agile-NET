@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SalesData>
+  <Food>
+    <Fruit>
+      <Fruit1>
+        <January sales="125"/>
+        <February sales="137"/>
+        <March sales="118"/>
+        <April sales="142"/>
+        <May sales="155"/>
+        <June sales="165"/>
+        <July sales="117"/>
+        <August sales="141"/>
+        <September sales="138"/>
+        <October sales="132"/>
+        <November sales="144"/>
+        <December sales="126"/>
+      </Fruit1>
+      <Fruit2>
+        <January sales="232"/>
+        <February sales="221"/>
+        <March sales="205"/>
+        <April sales="235"/>
+        <May sales="213"/>
+        <June sales="237"/>
+        <July sales="228"/>
+        <August sales="211"/>
+        <September sales="252"/>
+        <October sales="231"/>
+        <November sales="205"/>
+        <December sales="233"/>
+      </Fruit2>
+      <Fruit3>
+        <January sales="205"/>
+        <February sales="213"/>
+        <March sales="238"/>
+        <April sales="215"/>
+        <May sales="224"/>
+        <June sales="229"/>
+        <July sales="212"/>
+        <August sales="241"/>
+        <September sales="222"/>
+        <October sales="243"/>
+        <November sales="204"/>
+        <December sales="227"/>
+      </Fruit3>
+    </Fruit>
+    <Vegetable>
+      <Vegetable1>
+        <January sales="245"/>
+        <February sales="253"/>
+        <March sales="242"/>
+        <April sales="251"/>
+        <May sales="242"/>
+        <June sales="243"/>
+        <July sales="234"/>
+        <August sales="255"/>
+        <September sales="222"/>
+        <October sales="243"/>
+        <November sales="244"/>
+        <December sales="245"/>
+      </Vegetable1>
+      <Vegetable2>
+        <January sales="272"/>
+        <February sales="281"/>
+        <March sales="268"/>
+        <April sales="281"/>
+        <May sales="274"/>
+        <June sales="285"/>
+        <July sales="278"/>
+        <August sales="291"/>
+        <September sales="272"/>
+        <October sales="263"/>
+        <November sales="244"/>
+        <December sales="237"/>
+      </Vegetable2>
+      <Vegetable3>
+        <January sales="292"/>
+        <February sales="263"/>
+        <March sales="256"/>
+        <April sales="281"/>
+        <May sales="252"/>
+        <June sales="259"/>
+        <July sales="238"/>
+        <August sales="291"/>
+        <September sales="262"/>
+        <October sales="273"/>
+        <November sales="264"/>
+        <December sales="257"/>
+      </Vegetable3>
+    </Vegetable>
+  </Food>
+</SalesData>
